@@ -1,5 +1,5 @@
 /*!
- * jquery.fitpic.js 0.0.1 - https://github.com/yckart/jquery.fitpic.js
+ * jquery.fitpic.js 0.0.2 - https://github.com/yckart/jquery.fitpic.js
  * Stretch images perfect.
  *
  * Copyright (c) 2013 Yannick Albert (http://yckart.com)
