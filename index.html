@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width'>
+
+        <style>
+            /* no need for this */
+            html,body {height:100%, margin:0; padding:0}
+
+            .bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: -1
+            }
+        </style>
+
+        <title>jquery.fitpic.js | Stretch images perfect</title>
+    </head>
+
+    <body>
+        <img src="http://ge.tt/api/1/files/4oilgFS/0/blob?download" class='bg'>
+
+        <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+        <script src='jquery.fitpic.js'></script>
+        <script>
+            $(window).on('load resize', function(){
+                $('.bg').fitPic();
+            });
+        </script>
+    </body>
+</html>

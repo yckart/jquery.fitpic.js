@@ -1,0 +1,32 @@
+{
+    "name": "fitpic",
+    "title": "jQuery Fitpic",
+    "description": "Stretch images perfect.",
+    "keywords": [
+        "fit",
+        "image",
+        "resize",
+        "stretch",
+        "background",
+        "backgroundimage"
+    ],
+    "version": "0.0.4",
+    "author": {
+        "name": "Yannick Albert",
+        "email": "mail@yckart.com",
+        "url": "https://github.com/yckart"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://yckart.com/mit/"
+        }
+    ],
+    "homepage": "http://yckart.github.com/jquery.fitpic.js",
+    "demo": "http://yckart.github.com/jquery.fitpic.js",
+    "docs": "https://github.com/yckart/jquery.fitpic.js",
+    "bugs": "https://github.com/yckart/jquery.fitpic.js/issues",
+    "dependencies": {
+        "jquery": ">=1.8"
+    }
+}
