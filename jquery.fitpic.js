@@ -1,5 +1,5 @@
 /*!
- * jquery.fitpic.js 0.0.3 - https://github.com/yckart/jquery.fitpic.js
+ * jquery.fitpic.js 0.0.4 - https://github.com/yckart/jquery.fitpic.js
  * Stretch images perfect.
  *
  * Copyright (c) 2013 Yannick Albert (http://yckart.com)
@@ -43,7 +43,9 @@
             fitPic(elem);
             win.resize(function () {
                 clearTimeout(timeout);
-                timeout = setTimeout(fitPic, 100, elem);
+                timeout = setTimeout(function(){
+                    fitPic(elem);
+                }, 100);
             });
         });
     };
