@@ -43,7 +43,9 @@
             fitPic(elem);
             win.resize(function () {
                 clearTimeout(timeout);
-                timeout = setTimeout(fitPic, 100, elem);
+                timeout = setTimeout(function(){
+                    fitPic(elem);
+                }, 100);
             });
         });
     };
