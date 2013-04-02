@@ -6,7 +6,7 @@
 
         <style>
             /* no need for this */
-            html,body {height:100%, margin:0; padding:0}
+            html,body {height:100%; margin:0; padding:0}
 
             .bg {
                 position: fixed;
@@ -25,9 +25,7 @@
         <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
         <script src='jquery.fitpic.js'></script>
         <script>
-            $(window).on('load resize', function(){
-                $('.bg').fitPic();
-            });
+            $('.bg').fitPic();
         </script>
     </body>
 </html>
