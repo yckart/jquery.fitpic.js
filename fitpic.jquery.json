@@ -11,11 +11,7 @@
         "background",
         "backgroundimage"
     ],
-<<<<<<< HEAD:fitpic.jquery.json
-    "version": "0.0.2",
-=======
     "version": "0.0.3",
->>>>>>> master:fitpic.jquery.json
     "author": {
         "name": "Yannick Albert",
         "email": "mail@yckart.com",
