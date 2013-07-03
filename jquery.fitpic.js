@@ -1,42 +1,46 @@
 /*!
- * jquery.fitpic.js 0.0.3 - https://github.com/yckart/jquery.fitpic.js
+ * jquery.fitpic.js 0.0.5 - https://github.com/yckart/jquery.fitpic.js
  * Stretch images perfect.
  *
  * Copyright (c) 2013 Yannick Albert (http://yckart.com)
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
- * 2013/04/02
+ * 2013/07/03
 */
 (function ($, window) {
 
-    var win = $(window);
+    function fitPic(img, parent) {
+        var winW = window.innerWidth || $(parent).width(),
+            winH = window.innerHeight || $(parent).height(),
 
-    // Compute new dimensions for image
-    function fitPic(elem) {
-        var winW = win.width(),
-            winH = window.innerHeight || win.height(), // `innerHeight` for mobile safari
+            // get the image dimensions
+            imgW = img.width,
+            imgH = img.height,
 
-            elemW = elem.width,
-            elemH = elem.height,
+            // calculate the ratio
+            ratioW = (imgW * winH) / imgH,
+            ratioH = (imgH * winW) / imgW,
 
-            imgW = (elemW * winH) / elemH,
-            imgH = (elemH * winW) / elemW,
+            // check/compare the width and height
+            width = ratioW < winW ? winW : ratioW,
+            height = ratioH < winH ? winH : ratioH,
 
-            // Check the width and height
-            ratioW = imgH < winH ? imgW : winW,
-            ratioH = imgH < winH ? winH : imgH,
+            // position/center the image
+            left = (width - winW) / 2,
+            top = (height - winH) / 2,
 
-            // Position the image
-            left = (ratioW - winW) / 2,
-            top = (ratioH - winH) / 2;
+            style = img.style;
 
-        elem.style.width = ratioW + "px";
-        elem.style.height = ratioH + "px";
-        elem.style.marginTop = -top + "px";
-        elem.style.marginLeft = -left + "px";
+        // apply new dimensions for image
+        style.width = width + 'px';
+        style.height = height + 'px';
+        style.marginTop = -top + 'px';
+        style.marginLeft = -left + 'px';
+
     }
 
-    $.fn.fitPic = function () {
+    $.fn.fitPic = function (parent) {
         return this.each(function () {
+<<<<<<< HEAD
             var elem = this,
                 timeout;
 
@@ -47,7 +51,13 @@
                     fitPic(elem);
                 }, 100);
             });
+=======
+            var img = this;
+            $(window).on('resize load', function () {
+                fitPic(img, parent || this);
+            }).resize();
+>>>>>>> master
         });
     };
 
-}(jQuery, window));
+}(jQuery, this));
