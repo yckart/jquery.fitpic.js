@@ -40,23 +40,10 @@
 
     $.fn.fitPic = function (parent) {
         return this.each(function () {
-<<<<<<< HEAD
-            var elem = this,
-                timeout;
-
-            fitPic(elem);
-            win.resize(function () {
-                clearTimeout(timeout);
-                timeout = setTimeout(function(){
-                    fitPic(elem);
-                }, 100);
-            });
-=======
             var img = this;
             $(window).on('resize load', function () {
                 fitPic(img, parent || this);
             }).resize();
->>>>>>> master
         });
     };
 
