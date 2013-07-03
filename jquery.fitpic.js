@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2013 Yannick Albert (http://yckart.com)
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
- * 2013/04/02
+ * 2013/07/03
 */
 (function ($, window) {
 
@@ -35,7 +35,7 @@
         style.height = height + 'px';
         style.marginTop = -top + 'px';
         style.marginLeft = -left + 'px';
-        
+
     }
 
     $.fn.fitPic = function (parent) {
@@ -43,7 +43,7 @@
             var img = this;
             $(window).on('resize load', function () {
                 fitPic(img, parent || this);
-            }).resize(); 
+            }).resize();
         });
     };
 
