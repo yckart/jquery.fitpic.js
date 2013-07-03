@@ -1,5 +1,5 @@
 /*!
- * jquery.fitpic.js 0.0.4 - https://github.com/yckart/jquery.fitpic.js
+ * jquery.fitpic.js 0.0.5 - https://github.com/yckart/jquery.fitpic.js
  * Stretch images perfect.
  *
  * Copyright (c) 2013 Yannick Albert (http://yckart.com)
@@ -8,46 +8,43 @@
 */
 (function ($, window) {
 
-    var win = $(window);
+    function fitPic(img, parent) {
+        var winW = window.innerWidth || $(parent).width(),
+            winH = window.innerHeight || $(parent).height(),
 
-    // Compute new dimensions for image
-    function fitPic(elem) {
-        var winW = win.width(),
-            winH = window.innerHeight || win.height(), // `innerHeight` for mobile safari
+            // get the image dimensions
+            imgW = img.width,
+            imgH = img.height,
 
-            elemW = elem.width,
-            elemH = elem.height,
+            // calculate the ratio
+            ratioW = (imgW * winH) / imgH,
+            ratioH = (imgH * winW) / imgW,
 
-            imgW = (elemW * winH) / elemH,
-            imgH = (elemH * winW) / elemW,
+            // check/compare the width and height
+            width = ratioW < winW ? winW : ratioW,
+            height = ratioH < winH ? winH : ratioH,
 
-            // Check the width and height
-            ratioW = imgH < winH ? imgW : winW,
-            ratioH = imgH < winH ? winH : imgH,
+            // position/center the image
+            left = (width - winW) / 2,
+            top = (height - winH) / 2,
 
-            // Position the image
-            left = (ratioW - winW) / 2,
-            top = (ratioH - winH) / 2;
+            style = img.style;
 
-        elem.style.width = ratioW + "px";
-        elem.style.height = ratioH + "px";
-        elem.style.marginTop = -top + "px";
-        elem.style.marginLeft = -left + "px";
+        // apply new dimensions for image
+        style.width = width + 'px';
+        style.height = height + 'px';
+        style.marginTop = -top + 'px';
+        style.marginLeft = -left + 'px';
+        
     }
 
-    $.fn.fitPic = function () {
+    $.fn.fitPic = function (parent) {
         return this.each(function () {
-            var elem = this,
-                timeout;
-
-            fitPic(elem);
-            win.resize(function () {
-                clearTimeout(timeout);
-                timeout = setTimeout(function(){
-                    fitPic(elem);
-                }, 100);
-            });
+            var img = this;
+            $(window).on('resize load', function () {
+                fitPic(img, parent || this);
+            }).resize(); 
         });
     };
 
-}(jQuery, window));
+}(jQuery, this));
